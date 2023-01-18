@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>Form Converter</h1>
+        </div>
+            <form onsubmit="changeFont(event)">
+                <p><label for="headlabel" class="primtxt">Enter your text here:</label></p>
+                <textarea name="textinput" id="textinput" cols="60" rows="10" placeholder="Enter Text here"></textarea>
+                <br/>
+                <label for="cars" class="primtxt">Choose your font</label>
+                <select name="fonts" id="fonts">
+                    <option value="'Montserrat', sans-serif">Montserrat</option>
+                    <option value="'Roboto Condensed', sans-serif">Roboto</option>
+                    <option value="'Ubuntu', sans-serif">Poppins</option>
+                 </select><br/><br/>
+                 <br/><input type="submit" value="Submit"><br/><br/>
+                <label for="Output" class="primtxt" >Converted Text:</label><br/>
+
+                <textarea  id="newtext" cols="60" rows="10" placeholder="Converted text"></textarea>
+            </form>
+     
+        <footer>
+            <a href="https://github.com/aamina-sayeed" target="blank">Aamina-Sayeed </a><br/>
+            &copy; copyrights.All Rights Reserved
+            <span id="date"></span>
+        </footer>
+    </div>
+</body>
+<script>
+    
+    //update copyright span date
+    document.getElementById("date").innerText=new Date().getFullYear();
+    function changeFont(event){
+     //prevent page from reloading
+        event.preventDefault();
+        let text=document.getElementById("textinput").value;
+    //save text in local storage using console.log need to console.log to save in local storage to perform opration on it
+        console.log(text);
+    //getting the font name from select drop down menu 
+        let Fontname=document.getElementById("fonts").value;
+        console.log(Fontname);
+    //this is the element that has the output text area
+        let formattedtext=document.getElementById("newtext");//not doing .value coz text area doesn't have anuthing in it at the moment
+        console.log(formattedtext);
+
+    //till this point saved orginal text ,selected font style and output text area
+        formattedtext.innerText=text;
+        formattedtext.style.fontFamily=Fontname;
+
+    }
+</script>
+</html>
